@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment - GearGuard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        
+        /* Modal Transition */
+        .modal { transition: opacity 0.25s ease; }
+        body.modal-active { overflow-x: hidden; overflow-y: visible !important; }
+        
+        /* Dropdown Hover Logic */
+        .group:hover .group-hover\:block { display: block; animation: fadeIn 0.2s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="text-gray-800 relative">
+
+    <nav class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fa-solid fa-shield-halved text-purple-600 text-2xl mr-2"></i>
+                        <span class="font-bold text-xl tracking-tight text-gray-900">GearGuard</span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="dashboard.html" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Dashboard</a>
+                        <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Maintenance</a>
+                        
+                        <div class="relative group inline-flex items-center border-b-2 border-purple-500">
+                            <button class="text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium focus:outline-none">
+                                Equipment <i class="fa-solid fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                            <div class="hidden group-hover:block absolute top-14 left-0 w-48 bg-white shadow-lg rounded-md border border-gray-100 z-50">
+                                <a href="work_center.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-purple-50">Work Centers</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-purple-50">Machine & Tools</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                     <div class="bg-purple-100 rounded-full h-9 w-9 flex items-center justify-center text-purple-700 border border-purple-200">
+                           <i class="fa-solid fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <div class="mb-8">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div class="relative w-full sm:w-96">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fa-solid fa-search text-gray-400"></i>
+                    </div>
+                    <input type="text" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-purple-500 focus:border-purple-500 sm:text-sm shadow-sm" placeholder="Search equipment name, serial number...">
+                </div>
+
+                <button onclick="toggleModal('modal-equipment')" class="w-full sm:w-auto bg-purple-600 text-white px-6 py-2 rounded-md text-sm font-medium shadow hover:bg-purple-700 transition flex items-center justify-center">
+                    <i class="fa-solid fa-plus mr-2"></i> Add Equipment
+                </button>
+            </div>
+        </div>
+
+        <div class="bg-white shadow rounded-lg border border-gray-200 overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Equipment Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Serial Number</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Category</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Department</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Employee</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Technician</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Company</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-bold text-gray-900">CNC Machine #4</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">SN-9928-XJ</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-full border border-blue-200">Machine & Tools</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Production</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">John Doe</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="h-6 w-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-xs font-bold mr-2">AS</div>
+                                    <span class="text-sm text-gray-600">Alex Smith</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">GearGuard Inc.</td>
+                        </tr>
+
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-bold text-gray-900">Dell XPS 15</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">DL-5520-QR</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="bg-gray-100 text-gray-800 text-xs px-2 py-0.5 rounded-full border border-gray-200">Electronics</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">IT Department</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Sarah Lee</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="h-6 w-6 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center text-xs font-bold mr-2">RB</div>
+                                    <span class="text-sm text-gray-600">Robert Brown</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">GearGuard HQ</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50" id="modal-equipment">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="toggleModal('modal-equipment')"></div>
+        
+        <div class="modal-container bg-white w-11/12 md:max-w-2xl mx-auto rounded shadow-lg z-50 overflow-y-auto transform transition-all">
+            
+            <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center">
+                <h3 class="text-lg font-bold text-gray-900">Add New Equipment</h3>
+                <div class="cursor-pointer z-50" onclick="toggleModal('modal-equipment')">
+                    <i class="fa-solid fa-times text-gray-400 hover:text-gray-600"></i>
+                </div>
+            </div>
+
+            <div class="px-8 py-6 bg-gray-50/30">
+                <form class="space-y-6">
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Equipment Name</label>
+                            <input type="text" placeholder="e.g. Generator X1" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2 focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Serial Number</label>
+                            <input type="text" placeholder="e.g. SN-123456" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2 focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Equipment Category</label>
+                            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2 bg-white focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                                <option>Machine & Tools</option>
+                                <option>Work Center</option>
+                                <option>Vehicle</option>
+                                <option>Electronics</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Company</label>
+                            <input type="text" value="GearGuard Inc." class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2 focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Department</label>
+                            <input type="text" placeholder="e.g. Production" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2 focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Assigned Employee</label>
+                            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2 bg-white focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                                <option>Select Employee...</option>
+                                <option>John Doe</option>
+                                <option>Sarah Lee</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Assigned Technician</label>
+                        <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2 bg-white focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                            <option>Select Technician...</option>
+                            <option>Alex Smith (Mechanic)</option>
+                            <option>Mike Johnson (Electrician)</option>
+                            <option>Robert Brown (IT)</option>
+                        </select>
+                        <p class="mt-1 text-xs text-gray-500">The primary technician responsible for this asset.</p>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="px-6 py-4 bg-gray-50 flex justify-end space-x-3 rounded-b-md">
+                <button onclick="toggleModal('modal-equipment')" class="px-4 py-2 bg-white border border-gray-300 rounded text-gray-700 hover:bg-gray-100 text-sm font-medium shadow-sm">
+                    Cancel
+                </button>
+                <button onclick="toggleModal('modal-equipment')" class="px-4 py-2 bg-purple-600 rounded text-white hover:bg-purple-700 text-sm font-medium shadow-sm">
+                    Save Equipment
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function toggleModal(modalID){
+            const modal = document.getElementById(modalID);
+            modal.classList.toggle("opacity-0");
+            modal.classList.toggle("pointer-events-none");
+            document.body.classList.toggle("modal-active");
+        }
+    </script>
+</body>
+</html>

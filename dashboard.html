@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GearGuard Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        
+        /* Dropdown Hover Logic */
+        .group:hover .group-hover\:block { display: block; }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <nav class="bg-white shadow-sm border-b border-gray-200 z-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fa-solid fa-shield-halved text-purple-600 text-2xl mr-2"></i>
+                        <span class="font-bold text-xl tracking-tight text-gray-900">GearGuard</span>
+                    </div>
+
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="#" class="border-purple-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Dashboard
+                        </a>
+                        <a href="maintance.html" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Maintenance
+                        </a>
+                        <a href="Maintance_calender.html" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Maintenance Calendar
+                        </a>
+
+                        <div class="relative group inline-flex items-center border-b-2 border-transparent hover:border-gray-300">
+                            <button class="text-gray-500 group-hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium focus:outline-none">
+                                Equipment <i class="fa-solid fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                            <div class="hidden group-hover:block absolute top-14 left-0 w-48 bg-white shadow-lg rounded-md border border-gray-100 z-50">
+                                <a href="work_center.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-purple-50">Work Centre</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-purple-50">Machine & Tools</a>
+                            </div>
+                        </div>
+
+                        <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Reporting
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="flex items-center">
+                    <div class="ml-3 relative">
+                        <div class="bg-gray-200 rounded-full h-8 w-8 flex items-center justify-center text-gray-600">
+                           <a href="profile.html"><i class="fa-solid fa-user"> </i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+            <div class="relative w-full sm:w-96">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i class="fa-solid fa-search text-gray-400"></i>
+                </div>
+                <input type="text" class="block w-full pl-10 sm:text-sm border-gray-300 rounded-md py-2 border shadow-sm focus:ring-purple-500 focus:border-purple-500" placeholder="Search...">
+            </div>
+
+            <button class="w-full sm:w-auto bg-purple-600 text-white px-6 py-2 rounded-md text-sm font-medium shadow hover:bg-purple-700 flex items-center justify-center">
+                <i class="fa-solid fa-plus mr-2"></i> Add New
+            </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            
+            <div class="bg-red-600 rounded-lg shadow-lg text-white p-6 relative overflow-hidden">
+                <div class="absolute top-2 right-4 opacity-20">
+                    <i class="fa-solid fa-triangle-exclamation text-6xl"></i>
+                </div>
+                <dt class="text-sm font-medium text-red-100 uppercase">Critical Equipment</dt>
+                <dd class="mt-2 text-4xl font-bold">5 Units</dd>
+                <div class="mt-1 text-sm text-red-100 font-semibold">(Health < 30%)</div>
+                <p class="mt-4 text-xs text-red-100 opacity-90">
+                    Helps managers identify assets that need immediate replacement or major overhaul.
+                </p>
+            </div>
+
+            <div class="bg-blue-600 rounded-lg shadow-lg text-white p-6 relative overflow-hidden">
+                <div class="absolute top-2 right-4 opacity-20">
+                    <i class="fa-solid fa-users-gear text-6xl"></i>
+                </div>
+                <dt class="text-sm font-medium text-blue-100 uppercase">Technician Load</dt>
+                <dd class="mt-2 text-4xl font-bold">85%</dd>
+                <div class="mt-1 text-sm text-blue-100 font-semibold">Utilized (Assign Carefully)</div>
+                <p class="mt-4 text-xs text-blue-100 opacity-90">
+                    Displaying workforce utilization percentage.
+                </p>
+            </div>
+
+            <div class="bg-amber-500 rounded-lg shadow-lg text-white p-6 relative overflow-hidden">
+                <div class="absolute top-2 right-4 opacity-20">
+                    <i class="fa-solid fa-clipboard-list text-6xl"></i>
+                </div>
+                <dt class="text-sm font-medium text-amber-100 uppercase">Open Requests</dt>
+                <dd class="mt-2 text-4xl font-bold">12 Pending</dd>
+                <div class="mt-1 text-sm text-white font-bold bg-amber-700 inline-block px-2 py-0.5 rounded">3 Overdue</div>
+                <p class="mt-4 text-xs text-amber-100 opacity-90">
+                    Display the states where requests are in.
+                </p>
+            </div>
+        </div>
+
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+            <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">Maintenance Reports</h3>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">Maintenance reports for requisitions to track the process.</p>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Subject</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Employee</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Technician</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stage</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Company</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Oil Leak in CNC #4</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">John Doe</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Alex Smith</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Machine & Tools</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">In Progress</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Production</td>
+                        </tr>
+
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Conveyor Belt Jam</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Sarah Lee</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Mike Johnson</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Work Centre</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">New (Overdue)</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Logistics</td>
+                        </tr>
+
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Routine Safety Check</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Admin</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Robert Brown</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Machine & Tools</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Repaired</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Assembly</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

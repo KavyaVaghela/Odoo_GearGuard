@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Centers - GearGuard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        
+        /* Modal Transition */
+        .modal { transition: opacity 0.25s ease; }
+        body.modal-active { overflow-x: hidden; overflow-y: visible !important; }
+    </style>
+</head>
+<body class="text-gray-800 relative">
+
+    <nav class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fa-solid fa-shield-halved text-purple-600 text-2xl mr-2"></i>
+                        <span class="font-bold text-xl tracking-tight text-gray-900">GearGuard</span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="dashboard.html" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Dashboard</a>
+                        <a href="#" class="border-purple-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Work Centers</a>
+                        <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Machine & Tools</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                     <div class="bg-purple-100 rounded-full h-9 w-9 flex items-center justify-center text-purple-700 border border-purple-200">
+                           <i class="fa-solid fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-900">Work Centers</h1>
+                <p class="text-sm text-gray-500 mt-1">Manage capacity, efficiency, and costs for production zones.</p>
+            </div>
+            
+            <button onclick="toggleModal('modal-wc')" class="bg-purple-600 text-white px-5 py-2.5 rounded-md text-sm font-medium shadow hover:bg-purple-700 transition flex items-center">
+                <i class="fa-solid fa-plus mr-2"></i> Add Work Center
+            </button>
+        </div>
+
+        <div class="bg-white shadow rounded-lg border border-gray-200 overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Work Center / Code</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Tags</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Efficiency (Cap)</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">OEE Target</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Cost / Hour</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Alternative</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-bold text-gray-900">Assembly Line 1</div>
+                                <div class="text-xs text-gray-500">WC-001</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-full border border-blue-200">Production</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">100%</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <span class="text-sm font-bold text-green-600 mr-2">90%</span>
+                                    <div class="w-16 bg-gray-200 rounded-full h-1.5">
+                                        <div class="bg-green-500 h-1.5 rounded-full" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">$150.00</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Assembly Line 2</td>
+                        </tr>
+
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-bold text-gray-900">Drill Station A</div>
+                                <div class="text-xs text-gray-500">WC-005</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="bg-purple-100 text-purple-800 text-xs px-2 py-0.5 rounded-full border border-purple-200">Heavy Duty</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">85%</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <span class="text-sm font-bold text-yellow-600 mr-2">75%</span>
+                                    <div class="w-16 bg-gray-200 rounded-full h-1.5">
+                                        <div class="bg-yellow-500 h-1.5 rounded-full" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">$80.00</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">-</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50" id="modal-wc">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="toggleModal('modal-wc')"></div>
+        
+        <div class="modal-container bg-white w-11/12 md:max-w-2xl mx-auto rounded shadow-lg z-50 overflow-y-auto transform transition-all">
+            
+            <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center">
+                <h3 class="text-lg font-bold text-gray-900">Create Work Center</h3>
+                <div class="cursor-pointer z-50" onclick="toggleModal('modal-wc')">
+                    <i class="fa-solid fa-times text-gray-400 hover:text-gray-600"></i>
+                </div>
+            </div>
+
+            <div class="px-8 py-6 bg-gray-50/30">
+                <form class="space-y-6">
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Work Center Name</label>
+                            <input type="text" placeholder="e.g. Painting Station" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2 focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Code</label>
+                            <input type="text" placeholder="e.g. WC-100" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2 focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Tag</label>
+                            <input type="text" placeholder="e.g. Standard, Heavy" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2 focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Alternative Workcenters</label>
+                            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2 bg-white focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                                <option>None</option>
+                                <option>Assembly Line 2</option>
+                                <option>Drill Station B</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-gray-200 my-2"></div>
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-wide">Performance & Cost</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Cost per Hour</label>
+                            <div class="mt-1 relative rounded-md shadow-sm">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <span class="text-gray-500 sm:text-sm">$</span>
+                                </div>
+                                <input type="number" class="block w-full pl-7 rounded-md border-gray-300 shadow-sm border p-2 focus:ring-purple-500 focus:border-purple-500 sm:text-sm" placeholder="0.00">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Capacity Time Efficiency</label>
+                            <div class="mt-1 relative rounded-md shadow-sm">
+                                <input type="number" value="100" class="block w-full rounded-md border-gray-300 shadow-sm border p-2 focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                                <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                    <span class="text-gray-500 sm:text-sm">%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">OEE Target</label>
+                            <div class="mt-1 relative rounded-md shadow-sm">
+                                <input type="number" value="90" class="block w-full rounded-md border-gray-300 shadow-sm border p-2 focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                                <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                    <span class="text-gray-500 sm:text-sm">%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="px-6 py-4 bg-gray-50 flex justify-end space-x-3 rounded-b-md">
+                <button onclick="toggleModal('modal-wc')" class="px-4 py-2 bg-white border border-gray-300 rounded text-gray-700 hover:bg-gray-100 text-sm font-medium shadow-sm">
+                    Cancel
+                </button>
+                <button onclick="toggleModal('modal-wc')" class="px-4 py-2 bg-purple-600 rounded text-white hover:bg-purple-700 text-sm font-medium shadow-sm">
+                    Save Work Center
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function toggleModal(modalID){
+            const modal = document.getElementById(modalID);
+            modal.classList.toggle("opacity-0");
+            modal.classList.toggle("pointer-events-none");
+            document.body.classList.toggle("modal-active");
+        }
+    </script>
+</body>
+</html>
