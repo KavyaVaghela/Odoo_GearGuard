@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - GearGuard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>GearGuard</h1>
+        <h2>Create Portal User Account</h2>
+        
+        <div id="errorBox" class="error-msg"></div>
+
+        <form id="signupForm">
+            <div class="input-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+                <small style="color: #777; font-size: 0.8em; display:block; margin-top:5px;">
+                    Must be >8 chars, include lowercase, uppercase, & special char.
+                </small>
+            </div>
+            
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <div class="links" style="justify-content: center;">
+            <a href="login.html">Already have an account? Log In</a>
+        </div>
+    </div>
+
+    <script src="signup-script.js"></script>
+</body>
+</html>
