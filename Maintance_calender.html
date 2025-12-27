@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GearGuard - Maintenance Calendar</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div style="display:flex; align-items:center; height:100%;">
+            <div class="logo">GearGuard</div>
+            <nav>
+                <a href="#" class="active">Maintenance Calendar</a>
+            </nav>
+        </div>
+        <div class="user-actions">
+            <button class="btn btn-primary">+ Add New</button>
+            <div class="avatar"><i class="fas fa-user"></i></div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        
+        <div class="calendar-section">
+            
+            <div class="cal-toolbar">
+                <div class="nav-controls">
+                    <button class="btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                    <button class="btn" id="todayBtn">Today</button>
+                    <span class="current-date-label" id="currentDateLabel">December 2025</span>
+                </div>
+                <div class="view-controls">
+                    <button class="btn" id="monthViewBtn">Month</button>
+                    <button class="btn active" id="weekViewBtn">Week</button>
+                    <button class="btn" id="dayViewBtn">Day</button>
+                </div>
+            </div>
+
+            <div class="week-view" id="scrollContainer">
+                
+                <div class="week-header" id="weekHeader">
+                    </div>
+
+                <div class="time-grid" id="timeGrid">
+                    <div class="time-labels" id="timeLabels">
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+        <aside>
+            <div class="mini-calendar">
+                <div class="mini-calendar-header">
+                    <span id="miniCalTitle">December 2025</span>
+                    <div>
+                        <i class="fas fa-chevron-left" style="cursor:pointer; font-size:0.8rem; margin-right:10px;"></i>
+                        <i class="fas fa-chevron-right" style="cursor:pointer; font-size:0.8rem;"></i>
+                    </div>
+                </div>
+                <div class="mini-cal-grid" id="miniCalGrid">
+                    </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

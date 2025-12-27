@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GearGuard - Equipment Maintenance</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <div class="logo">GearGuard</div>
+            <nav>
+                <a href="#" class="active">Equipment</a>
+            </nav>
+        </div>
+        <div class="user-actions">
+            <button class="btn btn-primary" onclick="addNewItem()">+ Add New</button>
+            <div class="avatar"><i class="fas fa-user"></i></div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        
+        <div class="page-controls">
+            <div class="title-section">
+                <h1>Equipment Maintenance</h1>
+                <div class="action-buttons">
+                    <button class="btn btn-outline" id="newEquipmentBtn" onclick="addNewItem()">
+                        <i class="fas fa-plus"></i> New
+                    </button>
+                    <button class="btn btn-green" onclick="exportToExcel()">
+                        <i class="fas fa-file-excel"></i> Export Excel
+                    </button>
+                </div>
+            </div>
+
+            <div class="search-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search equipment, serial number, or employee...">
+            </div>
+        </div>
+
+        <div class="table-card">
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Equipment Name</th>
+                            <th>Employee</th>
+                            <th>Department</th>
+                            <th>Serial Number</th>
+                            <th>Technician</th>
+                            <th>Category</th>
+                            <th>Company</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        </tbody>
+                </table>
+            </div>
+            <div id="noResults" class="no-results" style="display: none;">
+                No equipment found matching your search.
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script2.js"></script>
+</body>
+</html>
