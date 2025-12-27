@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - GearGuard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>GearGuard</h1>
+        <h2>The Ultimate Maintenance Tracker</h2>
+        
+        <div id="errorBox" class="error-msg"></div>
+
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required placeholder="Enter your email">
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required placeholder="Enter your password">
+            </div>
+            
+            <button type="submit">Log In</button>
+        </form>
+
+        <div class="links">
+            <a href="signup.html">Create an Account</a>
+            <a href="forgot-password.html">Forgot Password?</a>
+        </div>
+    </div>
+
+    <script src="login-script.js"></script>
+</body>
+</html>
